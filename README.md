@@ -1,8 +1,8 @@
-# Pré-requisitos
+# Implantar uma aplicação Django no Elastic Beanstalk
 
-Para usar qualquer serviço da AWS, incluindo o Elastic Beanstalk, você precisa ter uma conta e credenciais da AWS. Para saber mais e se cadastrar, visite https://aws.amazon.com/
+## Pré-requisitos
 
-.
+Para usar qualquer serviço da AWS, incluindo o Elastic Beanstalk, você precisa ter uma conta e credenciais da AWS. 
 
 Para seguir este tutorial, você deve ter todos os Pré-requisitos comuns para Python instalados, incluindo os seguintes pacotes:
 
@@ -12,7 +12,7 @@ Para seguir este tutorial, você deve ter todos os Pré-requisitos comuns para P
 
     virtualenv
 
-    awsebcli
+    awsebcli - https://docs.aws.amazon.com/pt_br/elasticbeanstalk/latest/dg/eb-cli3-install-advanced.html
 
 Configurar um ambiente virtual Python e instalar o Django
 
