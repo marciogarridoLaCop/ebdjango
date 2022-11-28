@@ -28,19 +28,21 @@ class VisualizarRegistroSerializer(serializers.ModelSerializer):
     sensor = serializers.ReadOnlyField(source='sensor.sensor')
     class Meta:
         model = Registro
-        fields = ['id', 'sensor', 'temperatura', 'pressao','altitude','pressa_nivel_mar','altitude_real','data_registro']
+        fields = ['id', 'sensor', 'temperatura', 'pressao','precipitacao','altitude','pressa_nivel_mar','altitude_real','data_registro']
 
 class RegistroSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Registro
-        fields = ['id', 'sensor', 'temperatura', 'pressao','altitude','pressa_nivel_mar','altitude_real','data_registro']
+        fields = ['id', 'sensor', 'temperatura', 'pressao','precipitacao','altitude','pressa_nivel_mar','altitude_real','data_registro']
         
     def validate(self, data):
         if temperarura_valida(data['temperatura']):
             raise serializers.ValidationError({'temperatura':"A temperatura precisa ter um valor numérico"})
         if not temperarura_tamanho(data['temperatura']):
-            raise serializers.ValidationError({'temperatura':"A temperatura precisa ter um valor no máximo 5 dígitos"})   
+            raise serializers.ValidationError({'temperatura':"A temperatura precisa ter um valor no máximo 5 dígitos"})
+        if precipitacao_valida(data['precipitacao']):
+            raise serializers.ValidationError({'precipitacao':"A Precipitação precisa ter um valor numérico"})   
         if pressao_valida(data['pressao']):
             raise serializers.ValidationError({'pressao':"A pressão precisa ter um valor numérico"})
         if altitude_valida(data['altitude']):

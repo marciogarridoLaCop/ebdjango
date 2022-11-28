@@ -8,6 +8,9 @@ def temperarura_tamanho(valor_temperatura):
 def pressao_valida(valor_pressao):
     return valor_pressao.isalpha()    
 
+def precipitacao_valida(valor_precipitacao):
+    return valor_precipitacao.isalpha()
+
 def altitude_valida(valor_altiude):
     return valor_altiude.isalpha()
 
