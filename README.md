@@ -130,6 +130,8 @@ Abra o arquivo settings.py no diretório ebdjango. Localize a configuração ALL
 
 Salve o arquivo e, em seguida, implante o aplicativo executando eb deploy. Quando você executa eb deploy, a EB CLI empacota o conteúdo do diretório do projeto e implanta-o em seu ambiente.
 
+
+    git commit -m 'sua versao' 
     eb deploy
 
 Quando o processo de atualização do ambiente for concluído, abra o site com eb open.
