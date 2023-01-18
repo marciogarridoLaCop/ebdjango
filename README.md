@@ -12,7 +12,7 @@ Para seguir este tutorial, você deve ter todos os Pré-requisitos comuns para P
 
     virtualenv
 
-    awsebcli - https://docs.aws.amazon.com/pt_br/elasticbeanstalk/latest/dg/eb-cli3-install-advanced.html
+    awsebcli - https://docs.aws.amazon.com/pt_br/elasticbeanstalk/latest/dg/eb-clcd ..i3-install-advanced.html
 
 Configurar um ambiente virtual Python e instalar o Django
 
@@ -105,7 +105,7 @@ Crie um ambiente e implante o aplicativo nele com eb create.
 
 Vefifique após o deploy o status de sua aplicacao
 
-    eb status
+
 
 Environment details for: django-env
   
@@ -123,6 +123,7 @@ Environment details for: django-env
 Seu nome de domínio do ambiente é o valor da propriedade CNAME.
 
 Abra o arquivo settings.py no diretório ebdjango. Localize a configuração ALLOWED_HOSTS e adicione o nome de domínio do aplicativo que você encontrou na etapa anterior ao valor da configuração. Se você não encontrar essa configuração no arquivo, adicione-a em uma nova linha.
+    
     ...
     ALLOWED_HOSTS = ['django-env-api-aws.eba-xmduvwi5.us-east-1.elasticbeanstalk.com']
 
