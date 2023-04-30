@@ -24,7 +24,7 @@ Para configurar o ambiente virtual
 
     Crie um ambiente virtual denominado eb-virt.
 
-    virtualenv ~/eb-virt
+    python3 -m venv ~/eb-virt
 
 Ative o ambiente virtual.
 
@@ -48,10 +48,14 @@ Teste se o servidor esta rodando
 
     python manage.py runserver
 
-Configurar a aplicação Django para o Elastic Beanstalk
+## criando usuários
+
+    python manage.py createsuperuser
+
+## Configurar a aplicação Django para o Elastic Beanstalk
+
 
 Agora que você tem um site desenvolvido pelo Django em sua máquina local, você pode configurá-lo para implantação com o Elastic Beanstalk.
-
 Por padrão, o Elastic Beanstalk procura um arquivo chamado application.py para iniciar sua aplicação. Como isso não existe no projeto Django que você criou, é necessário fazer alguns ajustes no ambiente do aplicativo. Também é necessário definir variáveis de ambiente para que os módulos do aplicativo possam ser carregados.
 
 Como configurar seu site para o Elastic Beanstalk
@@ -61,6 +65,7 @@ Dentro da venv gere as dependencias.Execute pip freeze e salve a saída em um ar
     pip freeze > requirements.txt
 
 Crie o diretorio para armazenar as configuracoes 
+    
     mkdir .ebextensions
 
 No diretório .ebextensions, adicione um arquivo de configuração chamado django.config com o texto a seguir.
@@ -68,7 +73,6 @@ No diretório .ebextensions, adicione um arquivo de configuração chamado djang
     exemplo ~/ebdjango/.ebextensions/django.config
 
 Dentro deste arquivo, copie as seguintes configuracoes 
-
 
 option_settings:
   aws:elasticbeanstalk:container:python:
@@ -97,7 +101,7 @@ Gere o arquivo de configuracao de dados estaticos
 
 Inicialize o repositório da EB CLI com o comando eb init:
 
-    eb init -p python-3.7 django-env-api
+    eb init -p python-3.8 django-env-api
 
 Crie um ambiente e implante o aplicativo nele com eb create.
 
@@ -113,9 +117,9 @@ Environment details for: django-env
         Region: us-east-1
         Deployed Version: app-221127_143837260353
         Environment ID: e-trpgxqywtp
-        Platform: arn:aws:elasticbeanstalk:us-east-1::platform/Python 3.7 running on 64bit Amazon Linux 2/3.4.1
+        Platform: arn:aws:elasticbeanstalk:us-east-1::platform/Python 3.8 running on 64bit Amazon Linux 2/3.4.1
         Tier: WebServer-Standard-1.0
-        CNAME: django-env-api-aws.eba-xmduvwi5.us-east-1.elasticbeanstalk.com
+        CNAME: django-env.eba-pdtwmpte.us-east-1.elasticbeanstalk.com
         Updated: 2022-11-27 17:39:59.261000+00:00
         Status: Ready
         Health: Green
@@ -125,7 +129,7 @@ Seu nome de domínio do ambiente é o valor da propriedade CNAME.
 Abra o arquivo settings.py no diretório ebdjango. Localize a configuração ALLOWED_HOSTS e adicione o nome de domínio do aplicativo que você encontrou na etapa anterior ao valor da configuração. Se você não encontrar essa configuração no arquivo, adicione-a em uma nova linha.
     
     ...
-    ALLOWED_HOSTS = ['django-env-api-aws.eba-xmduvwi5.us-east-1.elasticbeanstalk.com']
+    ALLOWED_HOSTS = ['127.0.0.1','django-env.eba-pdtwmpte.us-east-1.elasticbeanstalk.com']
 
 
 Salve o arquivo e, em seguida, implante o aplicativo executando eb deploy. Quando você executa eb deploy, a EB CLI empacota o conteúdo do diretório do projeto e implanta-o em seu ambiente.
@@ -143,3 +147,19 @@ Quando o processo de atualização do ambiente for concluído, abra o site com e
 Se o aplicativo não aparecer em execução ou se houver uma mensagem de erro, consulte Solução de erros de implantação para obter ajuda sobre como determinar a causa do erro.
 
 Se a aplicação aparecer em execução, você implantou sua primeira aplicação Django com o Elastic Beanstalk.
+
+## ATUALIZACAO DA API.
+
+Sempre que fizer alteracao no código, siga os seguintes passos.
+
+1) Salve o arquivo
+2) Faca as migracoes 
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+3) Adicione as alteracoes ao GIT e faca um novo deploy na AWS
+
+    git add .
+    git commit -m "sua versão / mensagem"
+    eb deploy
