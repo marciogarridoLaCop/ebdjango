@@ -10,7 +10,7 @@ admin.site.register(Tipo,Tipos)
 
 
 class Sensores(admin.ModelAdmin):
-    list_display = ('id','sensor','local')
+    list_display = ('id','sensor','local','observacao')
     list_display_links = ('id', 'sensor')
     search_fields = ('sensor',)
     list_per_page = 20
