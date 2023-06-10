@@ -101,7 +101,7 @@ Gere o arquivo de configuracao de dados estaticos
 
 Inicialize o repositório da EB CLI com o comando eb init:
 
-    eb init -p python-3.8 django-env-api
+    eb init -p python-3.7 django-env-api
 
 Crie um ambiente e implante o aplicativo nele com eb create.
 
