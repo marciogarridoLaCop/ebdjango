@@ -9,7 +9,7 @@ class RegistroFilter(filters.FilterSet):
     fim = filters.DateFilter(field_name="data_registro", lookup_expr="lte")
     class Meta:
         model = Registro
-        fields = ['sensor',]
+        fields = ['estacao',]
 
 
 class TipoSerializer(serializers.ModelSerializer):
@@ -28,12 +28,14 @@ class VisualizarRegistroSerializer(serializers.ModelSerializer):
     sensor = serializers.ReadOnlyField(source='sensor.sensor')
     class Meta:
         model = Registro
-        fields = ['id', 'sensor', 'date','time','mm_h','mm_dia','temp','umidade','pressao','vmed','vmax','direcao','uv','w_m2','data_registro']
+        fields = ['id', 'estacao', 'data','hora','temp_min','temp_max','temp_media','umidade_min','umidade_max','umidade_media',
+    'vm_min','vm_max','vm_media','pressao_min','pressao_max','pressao_media','direcao','w_m2','uv','mm_ciclo','data_registro']
 
 class RegistroSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Registro
-        fields = ['id', 'sensor', 'date','time','mm_h','mm_dia','temp','umidade','pressao','vmed','vmax','direcao','uv','w_m2','data_registro']
+        fields = ['id', 'estacao', 'data','hora','temp_min','temp_max','temp_media','umidade_min','umidade_max','umidade_media',
+    'vm_min','vm_max','vm_media','pressao_min','pressao_max','pressao_media','direcao','w_m2','uv','mm_ciclo','data_registro']
         
    

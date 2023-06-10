@@ -26,7 +26,7 @@ class ListaRegistro(generics.ListAPIView):
         return queryset
     serializer_class = VisualizarRegistroSerializer
     filter_backends = [DjangoFilterBackend,filters.OrderingFilter,filters.SearchFilter]
-    search_fields =['sensor__sensor']
+    search_fields =['estacao__estacao']
     filterset_class = RegistroFilter
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]    
