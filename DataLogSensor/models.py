@@ -5,7 +5,7 @@ from datetime import datetime
 
 class Registro(models.Model):
 
-    estacao = models.ForeignKey(Sensor, blank=False, null=True,on_delete=models.CASCADE,verbose_name = 'Identificação da Estação')
+    estacao = models.ForeignKey(Sensor, blank=False, null=False,on_delete=models.CASCADE,verbose_name = 'Identificação da Estação')
     data= models.CharField(max_length=10,blank=True, null=False,verbose_name = 'Data')
     hora= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Hora')
     temp_min= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Temperatura Mínima')
