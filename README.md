@@ -163,3 +163,7 @@ Sempre que fizer alteracao no código, siga os seguintes passos.
     git add .
     git commit -m "sua versão / mensagem"
     eb deploy
+
+4) Eliminar a instância 
+
+    eb terminate django-env

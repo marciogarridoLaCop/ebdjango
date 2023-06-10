@@ -6,7 +6,7 @@ class Dados(admin.ModelAdmin):
     'vm_min','vm_max','vm_media','pressao_min','pressao_max','pressao_media','direcao','w_m2','uv','mm_ciclo','data_registro')
     list_display_links = ('id', 'estacao')
     search_fields = ('estacao',)
-    list_per_page = 100
+    list_per_page = 50
     ordering =('data_registro',)
 
 admin.site.register(Registro,Dados)
