@@ -18,7 +18,7 @@ class Registro(models.Model):
 
     vm_min= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Velocidade Mínima')
     vm_max= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Velocidade Máxima')
-    vm_med= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Velocidade Média')
+    vm_media= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Velocidade Média')
    
 
     pressao_min= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Pressao Mínima')
