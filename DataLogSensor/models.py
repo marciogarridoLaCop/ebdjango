@@ -21,8 +21,8 @@ class Registro(models.Model):
     vm_media= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Velocidade Média')
    
 
-    pressao_min= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Pressao Mínima')
-    pressao_max= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Pressao Máxima')
+    pressao_min= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Pressão Mínima')
+    pressao_max= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Pressão Máxima')
     pressao_media= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Pressao Média')
 
     direcao= models.CharField(max_length=8,blank=True, null=False,verbose_name = 'Direção do vento')
