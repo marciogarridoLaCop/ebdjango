@@ -9,7 +9,7 @@ class Tipo(models.Model):
         return self.nome
 
 class Sensor(models.Model):
-    sensor = models.CharField(max_length=30,blank=False,verbose_name = 'Nome do sensor')
+    sensor = models.CharField(max_length=30,blank=False,verbose_name = 'Nome da Estação')
     tipo = models.ForeignKey(Tipo,blank=False, on_delete=models.CASCADE)
     local = models.CharField(max_length=30 ,blank=False, null= False, verbose_name = 'Local de Instalação')
     macaddress = models.CharField(max_length=11 ,null=False,verbose_name = 'Endereço MAC', unique=True)
