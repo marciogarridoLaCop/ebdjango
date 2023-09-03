@@ -95,7 +95,7 @@ Abra o arquivo settings.py no diretório ebdjango. Localize a configuração ALL
     STATIC_ROOT = 'static'
 
 Gere o arquivo de configuracao de dados estaticos 
-
+ 
     python manage.py collectstatic
 
 
