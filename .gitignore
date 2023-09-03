@@ -1,7 +1,5 @@
-eb-virtaws s3 rb
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-
-aws s3 rb s3://elasticbeanstalk-us-west-2-303342061787 --force
+.env
