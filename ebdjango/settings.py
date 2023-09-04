@@ -79,18 +79,15 @@ WSGI_APPLICATION = 'ebdjango.wsgi.application'
 
 import os
 
-# Se as variáveis de ambiente do Elastic Beanstalk estiverem definidas, atualize a configuração
-if 'RDS_HOSTNAME' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
-        }
+
+# Configuração padrão (por exemplo, SQLite para desenvolvimento local)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
+
 
 
 # Password validation
